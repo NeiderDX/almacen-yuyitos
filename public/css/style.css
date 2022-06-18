@@ -4,6 +4,13 @@ body{
     margin:auto;
     text-align: center;
 }
+
+#titulo-registro{
+  text-align: center;
+  margin-top: 15px;
+}
+
+
 .login-form, .contenedor{
     width: 300px;
     margin:0 auto;
@@ -54,6 +61,7 @@ body{
     font-size: large;
     color: #ffffff;
     margin-top: 20px;
+    text-align:center;
     /* Para dar la apariencia de un boton */
     -webkit-appearance: button;
     -moz-appearance: button;
@@ -248,6 +256,4 @@ body{
       color: #01396eb9;
     }
     
-  
-  
   

@@ -4,12 +4,27 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Login</title>
 	<link rel="stylesheet" href="resources/css/style.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+
+	<title>Login</title>
 </head>
 <body>
+
+
+    <div class="container">
+            <div class="col-md" id="titulo-registro">
+				<img src="https://fv9-4.failiem.lv/thumb_show.php?i=ystzd9sjg&view" class="img-thumbnail" alt="logo" width="300">
+            </div>
+			<div class="col-md" id="titulo-registro">
+				<h2>Ingresar</h2>
+            </div>
+    </div>
+
+
+
+
 	<div class="login-form">
-		<h1>Login</h1>
 		<form action="auth" method="POST">
 			<input type="text" name="user" placeholder="Usuario" autofocus required>
 			<input type="password" name="pass" placeholder="Contraseña" required>
