@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="resources/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
 
-    <title>Inventario</title>
+    <title>Proveedores</title>
 </head>
 <body>
 
@@ -17,7 +17,7 @@
                 <img src="https://fv9-4.failiem.lv/thumb_show.php?i=ystzd9sjg&view" class="img-thumbnail" alt="logo">
             </div>
             <div class="col-auto" id="titulo">
-                <h1>Inventario</h1>
+                <h1>Proveedores</h1>
             </div>
         </div>
     </div>
@@ -29,52 +29,51 @@
                 <form class="row gy-2 gx-3 align-items-center">
                     <div class="col-auto">
                       <label class="visually-hidden" for="name">Nombre Completo</label>
-                      <input type="text" class="form-control" id="name" placeholder="Nombre Producto">
+                      <input type="text" class="form-control" id="name" placeholder="Nombre Proveedor">
                     </div>
                     <div class="col-auto">
-                        <label class="visually-hidden" for="autoSizingInputGroup">Tipo</label>
-                        <div class="input-group">
-                          <input type="text" class="form-control" id="deuda" placeholder="Tipo">
-                        </div>
-                      </div>
-                    <div class="col-auto">
-                      <label class="visually-hidden" for="autoSizingInputGroup">Cantidad</label>
+                      <label class="visually-hidden" for="autoSizingInputGroup">Contacto</label>
                       <div class="input-group">
-                        <div class="input-group-text">Nº</div>
-                        <input type="text" class="form-control" id="deuda" placeholder="Cantidad">
+                     
+                        <input type="text" class="form-control" id="deuda" placeholder="Contacto: teléfono, email...">
+                        
                       </div>
+                    </div>
+                    <div class="col-auto">
+                        <select class="form-select" aria-label="seleccion-rubro">
+                            <option selected>Área de rubro...</option>
+                            <option value="1">Congelados</option>
+                            <option value="2">Lacteos</option>
+                            <option value="3">Despensa</option>
+                            <option value="4">Aseo e higiene</option>
+                            <option value="5">Bebestibles</option>
+                            <option value="6">Pasteleria y dulces</option>
+                            <option value="7">Frutas y verduras</option>
+                            <option value="7">Carnes y rotisería</option>
+                            <option value="8">Otros...</option>
+                          </select>
                     </div>
                     
                     <div class="col-auto">
                       <button type="submit" class="btn btn-success">Aceptar</button>
-                    </div>
-                    <div class="col-auto">
-                        <div class="input-group">
-                          <input type="text" class="form-control">
-                          <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button">Buscar</button>
-                          </span>
-                        </div>
-                      </div>
                     </div>
                 </form>
                 <table class="table" id="tabla-clientes">
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nombre Producto</th>
-                        <th scope="col">Tipo</th>
-                        <th scope="col">Cantidad</th>
-                        
+                        <th scope="col">Nombre Proveedor</th>
+                        <th scope="col">Contacto</th>
+                        <th scope="col">Rubro</th>
                         <th scope="col">Acción</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
                         <th scope="row">1</th>
-                        <td>Cocacola</td>
-                        <td>1,5 litros</td>
-                        <td>25</td>
+                        <td>Congelados "El Pingüino"</td>
+                        <td>+569 12345678</td>
+                        <td>Congelados</td>
                         <td>
                             <button type="button" class="btn btn-outline-success btn-sm">Editar</button>
                             <button type="button" class="btn btn-outline-danger btn-sm">Borrar</button>
@@ -82,9 +81,9 @@
                       </tr>
                       <tr>
                         <th scope="row">2</th>
-                        <td>Leche Colun Entera</td>
-                        <td>1 litro</td>
-                        <td>17</td>
+                        <td>CCU</td>
+                        <td>+569 12345678, email@ccu.cl</td>
+                        <td>Bebestibles</td>
                         <td>
                             <button type="button" class="btn btn-outline-success btn-sm">Editar</button>
                             <button type="button" class="btn btn-outline-danger btn-sm">Borrar</button>
@@ -92,9 +91,9 @@
                       </tr>
                       <tr>
                         <th scope="row">3</th>
-                        <td>Durazno en conserva</td>
-                        <td>Lata conservera 375 gramos</td>
-                        <td>10</td>
+                        <td>Nestle</td>
+                        <td>+569 12345678, email@nestle.cl</td>
+                        <td>Pasteleria y dulces</td>
                         <td>
                             <button type="button" class="btn btn-outline-success btn-sm">Editar</button>
                             <button type="button" class="btn btn-outline-danger btn-sm">Borrar</button>

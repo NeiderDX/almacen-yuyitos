@@ -55,8 +55,8 @@ const connection = require('./database/db');
 	app.get('/informes',(req, res)=>{
 		res.render('informes');
 	})
-	app.get('/proovedores',(req, res)=>{
-		res.render('proovedores');
+	app.get('/proveedores',(req, res)=>{
+		res.render('proveedores');
 	})
 	
 
