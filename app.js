@@ -6,7 +6,7 @@ const app = express();
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());//además le decimos a express que vamos a usar json
 
-//3- Invocamos a dotenv
+//3- Dotenv
 const dotenv = require('dotenv');
 dotenv.config({ path: './env/.env'});
 
@@ -28,9 +28,9 @@ app.use(session({
 	saveUninitialized: true
 }));
 
-
 // 8 - Invocamos a la conexion de la DB
 const connection = require('./database/db');
+const router = require('./router');
 
 //9 - establecemos las rutas
 	app.get('/login',(req, res)=>{
@@ -43,9 +43,12 @@ const connection = require('./database/db');
 	app.get('/ventas',(req, res)=>{
 		res.render('ventas');
 	})
-	app.get('/clientes',(req, res)=>{
-		res.render('clientes');
-	})
+
+
+	app.use('/', require('./router'));
+
+
+
 	app.get('/inventario',(req, res)=>{
 		res.render('inventario');
 	})
@@ -55,10 +58,11 @@ const connection = require('./database/db');
 	app.get('/informes',(req, res)=>{
 		res.render('informes');
 	})
-	app.get('/proveedores',(req, res)=>{
-		res.render('proveedores');
-	})
+
 	
+	
+
+
 
 //10 - Método para la REGISTRACIÓN
 app.post('/register', async (req, res)=>{
@@ -144,6 +148,8 @@ app.get('/', (req, res)=> {
 	}
 	res.end();
 });
+
+
 
 
 //función para limpiar la caché luego del logout

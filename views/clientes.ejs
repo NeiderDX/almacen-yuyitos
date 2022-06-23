@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,55 +38,36 @@
                         <input type="text" class="form-control" id="deuda" placeholder="Deuda">
                       </div>
                     </div><div class="col-auto">
-                        <label class="visually-hidden" for="autoSizingInputGroup">Deuda</label>
+                        <label class="visually-hidden" for="autoSizingInputGroup">Fecha</label>
                         <input type="date" value="2017-06-01" id="fecha" placeholder="Fecha"/>
                     </div>
                     <div class="col-auto">
-                      <button type="submit" class="btn btn-success">Aceptar</button>
+                      <a href="/create" class="btn btn-outline-primary btn-sm">Agregar</a>
                     </div>
                 </form>
                 <table class="table" id="tabla-clientes">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">ID</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Deuda ($)</th>
                         <th scope="col">Fecha</th>
                         <th scope="col">Acción</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <% results.forEach(function (clientes) { %>
                       <tr>
-                        <th scope="row">1</th>
-                        <td>Juan</td>
-                        <td>600</td>
-                        <td>09/06/22</td>
+                        <td><%= clientes.id_cli %></td>
+                        <td><%= clientes.nombre_cli %></td>
+                        <td><%= clientes.deuda_cli %></td>
+                        <td><%= clientes.fecha_cli %></td>
                         <td>
-                            <button type="button" class="btn btn-outline-success btn-sm">Editar</button>
-                            <button type="button" class="btn btn-outline-danger btn-sm">Borrar</button>
+                          <a href="/edit" class="btn btn-outline-success btn-sm">Editar</a>
+                          <a href="/delete" class="btn btn-outline-danger btn-sm">Borrar</a>
                         </td>
                       </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Pedro</td>
-                        <td>3.500</td>
-                        <td>15/03/22</td>
-                        <td>
-                            <button type="button" class="btn btn-outline-success btn-sm">Editar</button>
-                            <button type="button" class="btn btn-outline-danger btn-sm">Borrar</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Diego</td>
-                        <td>1.500</td>
-                        <td>30/02/22</td>
-                        <td>
-                            <button type="button" class="btn btn-outline-success btn-sm">Editar</button>
-                            <button type="button" class="btn btn-outline-danger btn-sm">Borrar</button>
-                        </td>
-                      </tr>
-                    </tbody>
+      
+                    <% }) %>
                   </table>
             </div>
         </div>

@@ -18,6 +18,15 @@
         <div class="row">
           <div class="col-2" style="width: 300px;">
               <img src="https://fv9-4.failiem.lv/thumb_show.php?i=ystzd9sjg&view" class="img-thumbnail" alt="logo"><br>
+              <div id="current_date" style="margin-top: 25px;"></p>
+                <script>
+                date = new Date();
+                year = date.getFullYear();
+                month = date.getMonth() + 1;
+                day = date.getDate();
+                document.getElementById("current_date").innerHTML = day + "-" + month + "-" + year;
+                </script>
+              </div>
               <a href="logout" class="a-logout" style="margin-top: 25px;">Cerrar Sesión</a>
               
           </div>
@@ -42,6 +51,8 @@
         </div>
       </div>
 
+
+
     <%} else { %>
       <div class="container">
         <div class="col-md" id="titulo-registro">
@@ -54,6 +65,8 @@
         </div>
       </div>
     <% } %>
+
+
 
   </body>
 </html>

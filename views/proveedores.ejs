@@ -61,7 +61,7 @@
                 <table class="table" id="tabla-clientes">
                     <thead>
                       <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">ID</th>
                         <th scope="col">Nombre Proveedor</th>
                         <th scope="col">Contacto</th>
                         <th scope="col">Rubro</th>
@@ -69,36 +69,19 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Congelados "El Pingüino"</td>
-                        <td>+569 12345678</td>
-                        <td>Congelados</td>
-                        <td>
-                            <button type="button" class="btn btn-outline-success btn-sm">Editar</button>
-                            <button type="button" class="btn btn-outline-danger btn-sm">Borrar</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>CCU</td>
-                        <td>+569 12345678, email@ccu.cl</td>
-                        <td>Bebestibles</td>
-                        <td>
-                            <button type="button" class="btn btn-outline-success btn-sm">Editar</button>
-                            <button type="button" class="btn btn-outline-danger btn-sm">Borrar</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Nestle</td>
-                        <td>+569 12345678, email@nestle.cl</td>
-                        <td>Pasteleria y dulces</td>
-                        <td>
-                            <button type="button" class="btn btn-outline-success btn-sm">Editar</button>
-                            <button type="button" class="btn btn-outline-danger btn-sm">Borrar</button>
-                        </td>
-                      </tr>
+                      <% results.forEach(function (proveedores) { %>
+                        <tr>
+                          <td><%= proveedores.id_prov %></td>
+                          <td><%= proveedores.nombre_prov %></td>
+                          <td><%= proveedores.contacto_prov %></td>
+                          <td><%= proveedores.rubro_prov %></td>
+                          <td>
+                            <a href="/edit" class="btn btn-outline-success btn-sm">Editar</a>
+                            <a href="/delete" class="btn btn-outline-danger btn-sm">Borrar</a>
+                          </td>
+                        </tr>
+        
+                      <% }) %>
                     </tbody>
                   </table>
             </div>
