@@ -44,9 +44,6 @@ const router = require('./router');
 	app.get('/register',(req, res)=>{
 		res.render('register');
 	})
-	app.get('/ventas',(req, res)=>{
-		res.render('ventas');
-	})
 
 
 	app.use('/', require('./router'));

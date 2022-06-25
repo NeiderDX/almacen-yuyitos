@@ -14,9 +14,6 @@
     <title>Ventas</title>
 </head>
 <body>
-
-    
-
     <div class="container">
         <div class="row">
             <div class="col-2" style="width: 250px;">
@@ -62,6 +59,7 @@
                         <table class="table" id="tabla-clientes">
                             <thead>
                             <tr>
+                                <th scope="col">ID</th>
                                 <th scope="col">Producto</th>
                                 <th scope="col">Tipo</th>
                                 <th scope="col">Cantidad</th>
@@ -70,37 +68,20 @@
                             </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Bebida CocaCola</td>
-                                    <td>1.5 litros</td>
-                                    <td>2</td>
-                                    <td>3.200</td>
-                                    <td>
-                                    <a href="/edit" class="btn btn-outline-success btn-sm">Editar</a>
-                                    <a href="/delete" class="btn btn-outline-danger btn-sm">Borrar</a>
-                                    </td>
-                                </tr>
+
+                                <% results.forEach(function (ventas) { %>
                                     <tr>
-                                    <td>Leche Colun</td>
-                                    <td>1 litros</td>
-                                    <td>1</td>
-                                    <td>1.190</td>
-                                    <td>
-                                    <a href="/edit" class="btn btn-outline-success btn-sm">Editar</a>
-                                    <a href="/delete" class="btn btn-outline-danger btn-sm">Borrar</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Arroz Miraflores</td>
-                                        <td>1 kilo</td>
-                                        <td>1</td>
-                                        <td>990</td>
-                                        <td>
-                                            <a href="/edit" class="btn btn-outline-success btn-sm">Editar</a>
-                                            <a href="/delete" class="btn btn-outline-danger btn-sm">Borrar</a>
-                                        </td>
-                                    </td>
-                                </tr>
+                                      <td><%= ventas.id_ventas %></td>
+                                      <td><%= ventas.producto_ventas %></td>
+                                      <td><%= ventas.tipo_ventas %></td>
+                                      <td><%= ventas.cantidad_ventas %></td>
+                                      <td><%= ventas.valor_ventas %></td>
+                                      <td>
+                                        <a href="/edit" class="btn btn-outline-success btn-sm">Editar</a>
+                                        <a href="/delete" class="btn btn-outline-danger btn-sm">Borrar</a>
+                                      </td>
+                                    </tr>
+                                  <% }) %>
                             </tbody>
                            
                         </table>

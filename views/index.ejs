@@ -11,8 +11,6 @@
     <title>Menú</title>
   </head>
   <body>
-
-
     <% if (login) { %>
       <div class="container">
         <div class="row">
@@ -45,14 +43,15 @@
               </div>
           </div>
           <div style="margin-top: 50px;" class="col-2">
-            <a>Usuario conectado:</a>
-              <a><strong><%= name %></strong></a>
+            <div>
+              <a>Usuario conectado:</a>
+            </div>
+            <div>
+              <p class="text-uppercase"><strong><%= name %></strong></p>
+            </div>
           </div>
         </div>
       </div>
-
-
-
     <%} else { %>
       <div class="container">
         <div class="col-md" id="titulo-registro">
@@ -65,8 +64,5 @@
         </div>
       </div>
     <% } %>
-
-
-
   </body>
 </html>

@@ -53,6 +53,17 @@ router.get('/pedidos', (req, res)=>{
     })
 })
 
+router.get('/ventas', (req, res)=>{     
+    conexion.query('SELECT * FROM ventas',(error, results)=>{
+        if(error){
+            throw error;
+        } else {                       
+            res.render('ventas.ejs', {results:results});            
+        }   
+    })
+})
+
+
 
 module.exports = router;
 
