@@ -1,14 +1,137 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="resources/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <!-- Llamado a calculadora -->
+    <link rel="stylesheet" href="SimpleCalculadorajQuery.css">
+    <script src="SimpleCalculadorajQuery.js"></script>
+
 
     <title>Ventas</title>
 </head>
 <body>
 
+    
+
+    <div class="container">
+        <div class="row">
+            <div class="col-2" style="width: 250px;">
+                <img src="https://fv9-4.failiem.lv/thumb_show.php?i=ystzd9sjg&view" class="img-thumbnail" alt="logo">
+            </div>
+            <div class="col-auto" id="titulo">
+                <h1>Punto de ventas</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="lista clientes">
+        <div class="border">
+            <div class="row align-items-start">
+                <div class="col-3">
+                    <div class="border" style="margin: 20px; padding-left: 10px; padding-right: 10px;padding-bottom: 10px;padding-top: 10px;">
+                        <label for="exampleDataList" class="form-label" style="font-weight: bold;">Agregar artículo</label>
+                        <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Ingrese para buscar...">
+                        <datalist id="datalistOptions">
+                          <option value="Bebida - CocaCola">
+                          <option value="Leche Colun">
+                          <option value="Arroz Miraflores">
+                        </datalist>
+                        <select class="form-select" aria-label="tipo-producto"style=" margin-top: 20px;">
+                            <option selected>Tipo de producto...</option>
+                            <option value="1">1.5 litros</option>
+                            <option value="2">2 litros</option>
+                            <option value="3">3 litros</option>
+                          </select>
+                        <div class="input-group mb-3" style="margin-top: 20px;">
+                            <span class="input-group-text" id="basic-addon1">Cantidad</span>
+                            <input type="text" class="form-control" placeholder="Ingresar número" aria-label="Ingresar número" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3" style="margin-top: 20px;">
+                            <span class="input-group-text" id="basic-addon1">Inventario</span>
+                            <input class="form-control" type="text" placeholder="00000" aria-label="Disabled input example" disabled>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="border" style="margin: 20px; padding-left: 10px; padding-right: 10px;padding-bottom: 10px;">
+                        <table class="table" id="tabla-clientes">
+                            <thead>
+                            <tr>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Valor ($)</th>
+                                <th scope="col">Acción</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Bebida CocaCola</td>
+                                    <td>1.5 litros</td>
+                                    <td>2</td>
+                                    <td>3.200</td>
+                                    <td>
+                                    <a href="/edit" class="btn btn-outline-success btn-sm">Editar</a>
+                                    <a href="/delete" class="btn btn-outline-danger btn-sm">Borrar</a>
+                                    </td>
+                                </tr>
+                                    <tr>
+                                    <td>Leche Colun</td>
+                                    <td>1 litros</td>
+                                    <td>1</td>
+                                    <td>1.190</td>
+                                    <td>
+                                    <a href="/edit" class="btn btn-outline-success btn-sm">Editar</a>
+                                    <a href="/delete" class="btn btn-outline-danger btn-sm">Borrar</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Arroz Miraflores</td>
+                                        <td>1 kilo</td>
+                                        <td>1</td>
+                                        <td>990</td>
+                                        <td>
+                                            <a href="/edit" class="btn btn-outline-success btn-sm">Editar</a>
+                                            <a href="/delete" class="btn btn-outline-danger btn-sm">Borrar</a>
+                                        </td>
+                                    </td>
+                                </tr>
+                            </tbody>
+                           
+                        </table>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="border" style="margin: 20px; padding-left: 10px; padding-right: 10px;padding-bottom: 10px;">
+                        <h6 style="font-weight: bold;margin-top: 20px;">Detalle venta</h6>
+                        <div class="input-group mb-3" style="margin-top: 10px;">
+                            <span class="input-group-text" id="basic-addon1">Total $</span>
+                            <input type="text" class="form-control" placeholder="00000" aria-describedby="basic-addon1" disabled>
+                        </div>
+                        <div class="input-group mb-3" style="margin-top: 20px;">
+                            <span class="input-group-text" id="basic-addon1">Pago $</span>
+                            <input class="form-control" type="text" placeholder="Ingresar pago" aria-label="Disabled input example">
+                        </div>
+                        <div class="input-group mb-3" style="margin-top: 20px;">
+                            <span class="input-group-text" id="basic-addon1">Vuelto $</span>
+                            <input class="form-control" type="text" placeholder="00000" aria-label="Disabled input example" disabled>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="d-flex justify-content-evenly" style="margin-top: 20px;">
+                    <a href="http://localhost:3000" class="btn btn-danger">Cancelar compra</a>
+                    <a href="clientes" class="btn btn-warning">Agregar cliente deudor</a>
+                    <a href="#" class="btn btn-success">Confirmar compra</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+</html>

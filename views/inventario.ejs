@@ -58,50 +58,37 @@
                       </div>
                     </div>
                 </form>
+
                 <table class="table" id="tabla-clientes">
-                    <thead>
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Nombre Producto</th>
+                      <th scope="col">Tipo</th>
+                      <th scope="col">Cantidad</th>
+                      <th scope="col">Valor ($)</th>
+                      <th scope="col">Acción</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% results.forEach(function (inventario) { %>
                       <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nombre Producto</th>
-                        <th scope="col">Tipo</th>
-                        <th scope="col">Cantidad</th>
-                        
-                        <th scope="col">Acción</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Cocacola</td>
-                        <td>1,5 litros</td>
-                        <td>25</td>
+                        <td><%= inventario.id_inv %></td>
+                        <td><%= inventario.nombre_inv %></td>
+                        <td><%= inventario.tipo_inv %></td>
+                        <td><%= inventario.cantidad_inv %></td>
+                        <td><%= inventario.valor_inv %></td>
                         <td>
-                            <button type="button" class="btn btn-outline-success btn-sm">Editar</button>
-                            <button type="button" class="btn btn-outline-danger btn-sm">Borrar</button>
+                          <a href="/edit" class="btn btn-outline-success btn-sm">Editar</a>
+                          <a href="/delete" class="btn btn-outline-danger btn-sm">Borrar</a>
                         </td>
                       </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Leche Colun Entera</td>
-                        <td>1 litro</td>
-                        <td>17</td>
-                        <td>
-                            <button type="button" class="btn btn-outline-success btn-sm">Editar</button>
-                            <button type="button" class="btn btn-outline-danger btn-sm">Borrar</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Durazno en conserva</td>
-                        <td>Lata conservera 375 gramos</td>
-                        <td>10</td>
-                        <td>
-                            <button type="button" class="btn btn-outline-success btn-sm">Editar</button>
-                            <button type="button" class="btn btn-outline-danger btn-sm">Borrar</button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+      
+                    <% }) %>
+
+                  </tbody>
+
+                </table>
             </div>
         </div>
     </div>

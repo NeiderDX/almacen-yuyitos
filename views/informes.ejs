@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,11 +11,69 @@
     <title>Informes</title>
 </head>
 <body>
-    <h1>informes</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-2" style="width: 250px;">
+                <img src="https://fv9-4.failiem.lv/thumb_show.php?i=ystzd9sjg&view" class="img-thumbnail" alt="logo">
+            </div>
+            <div class="col-auto" id="titulo">
+                <h1>Informes</h1>
+            </div>
+        </div>
+    </div>
 
 
-
-
-
+    <div class="container" id="lista clientes">
+        <div class="row align-items-start">
+            <div class="col">
+                <form class="row gy-2 gx-3 align-items-center">
+                    <div class="col-auto">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Seleccioanr tipo...</option>
+                            <option value="1">Clientes</option>
+                            <option value="2">Proveedores</option>
+                            <option value="3">Pedidos</option>
+                            <option value="3">Inventario</option>
+                            <option value="3">Ventas</option>
+                          </select>
+                    </div>
+                    <div class="col-auto">
+                        <label class="visually-hidden" for="autoSizingInputGroup">Fecha</label>
+                        <input type="datetime-local" name="date" id="date">
+                    </div>
+                    <div class="col-auto">
+                      <a href="#" class="btn btn-primary btn-sm">Generar nuevo informe</a>
+                    </div>
+                </form>
+                <table class="table" id="tabla-clientes">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Acción</th>
+                      </tr>
+                    </thead>
+                    <% results.forEach(function (informes) { %>
+                      <tr>
+                        <td><%= informes.id_info %></td>
+                        <td><%= informes.tipo_info %></td>
+                        <td><%= informes.fecha_info %></td>
+                        <td>
+                            <a href="#" class="btn btn-outline-success btn-sm">Imprimir</a>
+                            <a href="/delete" class="btn btn-outline-danger btn-sm">Borrar</a>
+                        </td>
+                      </tr>
+                    <% }) %>
+                  </table>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <a href="http://localhost:3000" class="btn btn-primary">Volver al menú</a>
+        </div>
+    </div>
 </body>
 </html>

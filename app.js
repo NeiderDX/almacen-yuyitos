@@ -32,6 +32,10 @@ app.use(session({
 const connection = require('./database/db');
 const router = require('./router');
 
+
+
+
+
 //9 - establecemos las rutas
 	app.get('/login',(req, res)=>{
 		res.render('login');
@@ -49,15 +53,6 @@ const router = require('./router');
 
 
 
-	app.get('/inventario',(req, res)=>{
-		res.render('inventario');
-	})
-	app.get('/pedidos',(req, res)=>{
-		res.render('pedidos');
-	})
-	app.get('/informes',(req, res)=>{
-		res.render('informes');
-	})
 
 	
 	

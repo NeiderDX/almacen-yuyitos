@@ -23,6 +23,35 @@ router.get('/proveedores', (req, res)=>{
     })
 })
 
+router.get('/informes', (req, res)=>{     
+    conexion.query('SELECT * FROM informes',(error, results)=>{
+        if(error){
+            throw error;
+        } else {                       
+            res.render('informes.ejs', {results:results});            
+        }   
+    })
+})
+
+router.get('/inventario', (req, res)=>{     
+    conexion.query('SELECT * FROM inventario',(error, results)=>{
+        if(error){
+            throw error;
+        } else {                       
+            res.render('inventario.ejs', {results:results});            
+        }   
+    })
+})
+
+router.get('/pedidos', (req, res)=>{     
+    conexion.query('SELECT * FROM pedidos',(error, results)=>{
+        if(error){
+            throw error;
+        } else {                       
+            res.render('pedidos.ejs', {results:results});            
+        }   
+    })
+})
 
 
 module.exports = router;

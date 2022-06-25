@@ -47,11 +47,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
 <div class="container">
     <table class="table align-middle">
         <thead>
@@ -63,38 +58,20 @@
             <th scope="col">Acción</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <th scope="row">001</th>
-            <td>CocaCola</td>
-            <td>Producto1*30/Producto2*30</td>
-            <td>01/02/22</td>
-            <td>
-                <button type="button" class="btn btn-outline-success btn-sm">Editar</button>
-                <button type="button" class="btn btn-outline-danger btn-sm">Borrar</button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">002</th>
-            <td>Pepsi</td>
-            <td>Producto1*40</td>
-            <td>30/02/22</td>
-            <td>
-                <button type="button" class="btn btn-outline-success btn-sm">Editar</button>
-                <button type="button" class="btn btn-outline-danger btn-sm">Borrar</button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">003</th>
-            <td>CocaCola</td>
-            <td>Producto1*35</td>
-            <td>15/05/22</td>
-            <td>
-                <button type="button" class="btn btn-outline-success btn-sm">Editar</button>
-                <button type="button" class="btn btn-outline-danger btn-sm">Borrar</button>
-            </td>
-          </tr>
-          </tbody>
+            <tbody>
+              <% results.forEach(function (pedidos) { %>
+                <tr>
+                  <td><%= pedidos.id_pedidos %></td>
+                  <td><%= pedidos.empresa_pedidos %></td>
+                  <td><%= pedidos.detalle_pedidos %></td>
+                  <td><%= pedidos.fecha_pedidos %></td>
+                  <td>
+                    <a href="/edit" class="btn btn-outline-success btn-sm">Editar</a>
+                    <a href="/delete" class="btn btn-outline-danger btn-sm">Borrar</a>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>   
       </table>
     </div>
     <div class="container">
