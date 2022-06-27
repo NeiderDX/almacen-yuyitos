@@ -63,7 +63,29 @@ router.get('/ventas', (req, res)=>{
     })
 })
 
+router.get('/info_generada', (req, res)=>{     
+    conexion.query('SELECT * FROM clientes',(error, results)=>{
+        if(error){
+            throw error;
+        } else {                       
+            res.render('info_generada', {results:results});            
+        }   
+    })
+})
 
+
+router.get('/create_cli', (req, res) => {
+    conexion.query('SELECT * FROM clientes',(error, results)=>{
+        if(error){
+            throw error;
+        } else {                       
+            res.render('create_cli.ejs', {results:results});            
+        }   
+    })
+})
+
+const crud = require('./controllers/crud');
+router.post('/save', crud.save)
 
 module.exports = router;
 

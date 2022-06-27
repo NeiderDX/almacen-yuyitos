@@ -2,6 +2,7 @@
 const express = require('express');
 const app = express();
 
+
 //2 - Para poder capturar los datos del formulario (sin urlencoded nos devuelve "undefined")
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());//además le decimos a express que vamos a usar json
@@ -48,8 +49,7 @@ const router = require('./router');
 
 	app.use('/', require('./router'));
 
-
-
+	
 
 	
 	

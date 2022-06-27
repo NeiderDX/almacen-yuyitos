@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="resources/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+
+
+    <title>Informes</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-2" style="width: 250px;">
+                <img src="https://fv9-4.failiem.lv/thumb_show.php?i=ystzd9sjg&view" class="img-thumbnail" alt="logo">
+            </div>
+            <div class="col-auto" id="titulo">
+                <h1>Informe: Clientes</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="lista clientes">
+        <div class="row align-items-start">
+            <div class="col">
+                <table class="table" id="tabla-clientes">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Deuda ($)</th>
+                        <th scope="col">Fecha</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <% results.forEach(function (clientes) { %>
+                            <tr>
+                              <td><%= clientes.id_cli %></td>
+                              <td><%= clientes.nombre_cli %></td>
+                              <td><%= clientes.deuda_cli %></td>
+                              <td><%= clientes.fecha_cli %></td>
+                            </tr>
+                          <% }) %>
+                    </tbody>
+                    <tfoot>
+                        <div id="current_date" style="margin-top: 25px;">
+                            <script>
+                                date = new Date();
+                                year = date.getFullYear();
+                                month = date.getMonth() + 1;
+                                day = date.getDate();
+                                document.getElementById("current_date").innerHTML = day + "-" + month + "-" + year;
+                            </script>
+                        </div>
+                    </tfoot>
+                  </table>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="javascript:window.print()" class="btn btn-success">Imprimir</a>
+          <a href="http://localhost:3000" class="btn btn-primary">Volver al menú</a>
+        </div>
+    </div>
+</body>
+</html>
