@@ -73,7 +73,7 @@ app.post('/register', async (req, res)=>{
 				alertMessage: "¡Te has registrado correctamente!",
 				alertIcon:'success',
 				showConfirmButton: false,
-				timer: 1500,
+				timer: 15000,
 				ruta: ''
 			});
             //res.redirect('/');         
@@ -113,7 +113,7 @@ app.post('/auth', async (req, res)=> {
 					alertMessage: "¡LOGIN CORRECTO!",
 					alertIcon:'success',
 					showConfirmButton: false,
-					timer: 1500,
+					timer: 15000,
 					ruta: ''
 				});        			
 			}			

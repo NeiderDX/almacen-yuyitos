@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="resources/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
     <title>Cliente</title>
 </head>
@@ -60,9 +62,46 @@
                         <td><%= clientes.deuda_cli %></td>
                         <td><%= clientes.fecha_cli %></td>
                         <td>
-                          <a href="/edit" class="btn btn-outline-success btn-sm">Editar</a>
-                          <a href="/delete" class="btn btn-outline-danger btn-sm">Borrar</a>
+                            <p>
+                                <button class="btn btn-outline-success" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                  Editar
+                                </button>
+                                <a href="/delete/<%= clientes.id_cli %>" class="btn btn-outline-danger">Borrar<i class='bx bxs-trash-alt'></i></a>
+                              </p>
+                              <div class="collapse" id="collapseExample">
+                                <div class="card card-body">
+                                    <% if (clientes) { %>
+                                        <div class="container mt-4">          
+                                            <div class="card border-secondary">  
+                                                  <div class="card-header">Editar Registro</div>
+                                                  <div class="card-body">
+                                                      <form action="/update" method="POST">
+                                                           <input id="id_cli" name="id_cli" value="<%= clientes.id_cli %>" hidden>
+                                                          <div class="mb-3">
+                                                            <label for="nombre_cli" class="form-label">Cliente</label>
+                                                            <input type="text" class="form-control" id="nombre_cli" name="nombre_cli" tabindex="1" value="<%= clientes.nombre_cli  %>">                        
+                                                          </div>   
+                                                          <div class="mb-3">
+                                                            <label for="deuda_cli" class="form-label">Deuda</label>
+                                                            <input type="text" class="form-control" id="deuda_cli" name="deuda_cli" tabindex="1" value="<%= clientes.deuda_cli  %>">                        
+                                                          </div>   
+                                                          <div class="mb-3">
+                                                            <label for="fecha_cli" class="form-label">Fecha</label>
+                                                            <input type="date" id="fecha_cli" placeholder="Fecha" name="fecha_cli" tabindex="3" value="<%= clientes.deuda_cli  %>">                       
+                                                          </div>   
+                                                          <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                                                          <a href="create_cli" class="btn btn-secondary">Cancelar</a>
+                                                      </form>      
+                                                  </div>
+                                              </div>     
+                                        </div>
+                                    <% } %>
+                                </div>
+                              </div>
+                            </div>
+                            
                         </td>
+
                       </tr>
       
                     <% }) %>
@@ -72,7 +111,7 @@
     </div>
     <div class="container">
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <a href="http://localhost:3000" class="btn btn-primary">Volver atrás</a>
+            <a href="http://localhost:3000" class="btn btn-primary">Volver al menú</a>
         </div>
     </div>
 </body>

@@ -84,8 +84,32 @@ router.get('/create_cli', (req, res) => {
     })
 })
 
+router.get('/create_cli/:id_cli', (req,res)=>{    
+    const id_cli = req.params.id_cli;
+    connection.query('SELECT * FROM clientes WHERE id_cli=?',[id_cli] , (error, results) => {
+        if (error) {
+            throw error;
+        }else{            
+            res.render('create_cli', {clientes:results[0]});            
+        }        
+    });
+});
+
+router.get('/delete/:id_cli', (req, res) => {
+    const id_cli = req.params.id_cli;
+    connection.query('DELETE FROM clientes WHERE id_cli=?',[id_cli], (error, results)=>{
+        if(error){
+            console.log(error);
+        }else{           
+            res.redirect('/');             
+        }
+    });
+});
+
 const crud = require('./controllers/crud');
-router.post('/save', crud.save)
+const connection = require('./database/db');
+router.post('/save', crud.save);
+router.post('/update', crud.update);
 
 module.exports = router;
 
