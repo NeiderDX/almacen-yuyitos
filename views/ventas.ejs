@@ -5,7 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="resources/css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script language="Javascript">
+        function imprSelec(historial){
+        var ficha=document.getElementById(historial);
+        var ventimp=window.open(' ','popimpr');
+        ventimp.document.write(ficha.innerHTML);
+        ventimp.document.close();
+        ventimp.print();
+        ventimp.close();
+        }
+    </script>
+    <script language="Javascript">
+        function resta(){
+        var resultado;
+        var num1=parseInt(document.getElementById("num1").value);
+        var num2=parseInt(document.getElementById("num2").value);
+        var resta=parseFloat(num1)-parseFloat(num2);
+        resultado= resta;
+        document.getElementById("resultado").innerHTML = resultado;
+        }
+    </script>
+
 
 
     <title>Ventas</title>
@@ -26,33 +50,37 @@
         <div class="border">
             <div class="row align-items-start">
                 <div class="col-3">
-                    <div class="border" style="margin: 20px; padding-left: 10px; padding-right: 10px;padding-bottom: 10px;padding-top: 10px;">
+                    <form class="row" style="padding: 20px;" action="/save_ventas" method="POST">
                         <label for="exampleDataList" class="form-label" style="font-weight: bold;">Agregar artículo</label>
-                        <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Ingrese para buscar...">
-                        <datalist id="datalistOptions">
+                        <input class="form-control" list="datalistOptions" id="producto_ventas" placeholder="Ingrese para buscar..." for="ventas" name="producto_ventas" >
+                        <datalist id="datalistOptions" id="producto_ventas" name="producto_ventas" >
                           <option value="Bebida - CocaCola">
-                          <option value="Leche Colun">
-                          <option value="Arroz Miraflores">
+                          <option value="Leche - Colun">
+                          <option value="Arroz - Miraflores">
                         </datalist>
-                        <select class="form-select" aria-label="tipo-producto"style=" margin-top: 20px;">
+                        <select class="form-select" id="tipo_ventas" name="tipo_ventas" style=" margin-top: 20px;" for="ventas">
                             <option selected>Tipo de producto...</option>
-                            <option value="1">1.5 litros</option>
-                            <option value="2">2 litros</option>
-                            <option value="3">3 litros</option>
+                            <option value="1.5 litros">1.5 litros</option>
+                            <option value="1 litros">1 litros</option>
+                            <option value="1 kilo">1 kilo</option>
+                            <option value="375 gramos">375 gramos</option>
                           </select>
                         <div class="input-group mb-3" style="margin-top: 20px;">
-                            <span class="input-group-text" id="basic-addon1">Cantidad</span>
-                            <input type="text" class="form-control" placeholder="Ingresar número" aria-label="Ingresar número" aria-describedby="basic-addon1">
+                            <span class="input-group-text" id="cantidad_ventas" for="ventas">Cantidad</span>
+                            <input type="number" class="form-control" placeholder="Ingresar número" name="cantidad_ventas" id="cantidad_ventas">
                         </div>
                         <div class="input-group mb-3" style="margin-top: 20px;">
-                            <span class="input-group-text" id="basic-addon1">Inventario</span>
-                            <input class="form-control" type="text" placeholder="00000" aria-label="Disabled input example" disabled>
+                            <span class="input-group-text" id="basic-addon1">Valor $</span>
+                            <input class="form-control" type="text" aria-label="Disabled input example" id="valor_ventas" name="valor_ventas">
                         </div>
-                    </div>
+                        <div class="col-auto">
+                            <button class="btn btn-primary btn-sm" type="submit">Agregar</button>
+                          </div>
+                    </form>
                 </div>
 
                 <div class="col-6">
-                    <div class="border" style="margin: 20px; padding-left: 10px; padding-right: 10px;padding-bottom: 10px;">
+                    <div class="border" style="margin-top: 10px; padding-bottom: 10px;">
                         <table class="table" id="tabla-clientes">
                             <thead>
                             <tr>
@@ -74,39 +102,137 @@
                                       <td><%= ventas.cantidad_ventas %></td>
                                       <td><%= ventas.valor_ventas %></td>
                                       <td>
-                                        <a href="/edit" class="btn btn-outline-success btn-sm">Editar</a>
-                                        <a href="/delete" class="btn btn-outline-danger btn-sm">Borrar</a>
+                                        <p>
+                                            <button class="btn btn-outline-success" type="button" data-bs-toggle="collapse" data-bs-target="#collapse" aria-expanded="false" aria-controls="<%= ventas.id_ventas %>">Editar</button>
+                                            <a href="/delete_ventas/<%= ventas.id_ventas %>" class="btn btn-outline-danger">Borrar<i class='bx bxs-trash-alt'></i></a>
+                                        </p>
+
+
+                                        <div class="collapse" id="collapse">
+                                            <div class="card card-body">
+                                                <% if (ventas) { %>
+                                                    <div class="container mt-4">          
+                                                        <div class="card border-secondary">  
+                                                              <div class="card-header">Editar Registro</div>
+                                                              <div class="card-body">
+                                                                  <form action="/update_ventas" method="POST">
+                                                                       <input id="id_ventas" name="id_ventas" value="<%= ventas.id_ventas %>" hidden>
+                                                                      <div class="mb-3">
+                                                                        <label for="producto_ventas" class="form-label">Producto</label>
+                                                                        <input type="text" class="form-control" id="producto_ventas" name="producto_ventas" tabindex="1" value="<%= ventas.producto_ventas  %>">                        
+                                                                      </div>   
+                                                                      <div class="mb-3">
+                                                                        <label for="tipo_ventas" class="form-label">Tipo</label>
+                                                                        <input type="text" class="form-control" id="tipo_ventas" name="tipo_ventas" tabindex="2" value="<%= ventas.tipo_ventas %>">                        
+                                                                      </div>   
+                                                                      <div class="mb-3">
+                                                                        <label for="cantidad_ventas" class="form-label">Cantidad</label>
+                                                                        <input type="number" class="form-control" id="cantidad_ventas" name="cantidad_ventas" tabindex="2" value="<%= ventas.cantidad_ventas %>">                          
+                                                                      </div>
+                                                                      <div class="mb-3">
+                                                                        <label for="valor_ventas" class="form-label">Valor $</label>
+                                                                        <input type="text" class="form-control" id="valor_ventas" name="valor_ventas" tabindex="2" value="<%= ventas.valor_ventas %>">                          
+                                                                      </div>   
+                                                                      <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+                                                                      <a href="ventas" class="btn btn-secondary">Cancelar</a>
+                                                                  </form>      
+                                                              </div>
+                                                          </div>     
+                                                    </div>
+                                                <% } %>
+                                            </div>
+                                        </div>
                                       </td>
                                     </tr>
-                                  <% }) %>
+                                    <% }) %>
                             </tbody>
-                           
                         </table>
                     </div>
                 </div>
                 <div class="col-3">
-                    <div class="border" style="margin: 20px; padding-left: 10px; padding-right: 10px;padding-bottom: 10px;">
-                        <h6 style="font-weight: bold;margin-top: 20px;">Detalle venta</h6>
-                        <div class="input-group mb-3" style="margin-top: 10px;">
-                            <span class="input-group-text" id="basic-addon1">Total $</span>
-                            <input type="text" class="form-control" placeholder="00000" aria-describedby="basic-addon1" disabled>
+                    
+                        <div class="border" style="margin: 20px; padding-left: 10px; padding-right: 10px;padding-bottom: 10px;">
+                            <h6 style="font-weight: bold;margin-top: 20px;">Detalle venta</h6>
+                            <% results.forEach(function (ventas) { %>
+                            <div class="input-group mb-3" style="margin-top: 10px;">
+                                <span class="input-group-text" id="basic-addon1">Total $</span>
+                                <input type="text" class="form-control" value="<%= ventas.valor_ventas * ventas.cantidad_ventas %>" id="num2" disabled>
+                            </div>
+                            <div class="input-group mb-3" style="margin-top: 20px;">
+                                <span class="input-group-text" id="basic-addon1">Pago $</span>
+                                <input class="form-control" type="text" placeholder="Ingresar pago" id="num1">
+                            </div>
+                            <div class="input-group mb-3" style="margin-top: 20px;">
+                                <button type="button" class="btn btn-outline-primary " onclick="resta()">Vuelto $</button>
+                                <input type="text" class="form-control" name="resultado" id="resultado">
+
+                            </div>
+                            <% }) %>
                         </div>
-                        <div class="input-group mb-3" style="margin-top: 20px;">
-                            <span class="input-group-text" id="basic-addon1">Pago $</span>
-                            <input class="form-control" type="text" placeholder="Ingresar pago" aria-label="Disabled input example">
-                        </div>
-                        <div class="input-group mb-3" style="margin-top: 20px;">
-                            <span class="input-group-text" id="basic-addon1">Vuelto $</span>
-                            <input class="form-control" type="text" placeholder="00000" aria-label="Disabled input example" disabled>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
             <div class="container">
                 <div class="d-flex justify-content-evenly" style="margin-top: 20px;">
-                    <a href="http://localhost:3000" class="btn btn-danger">Cancelar compra</a>
+                    <% results.forEach(function (ventas) { %>
+                    <a href="/delete_ventas/<%= ventas.id_ventas %>" class="btn btn-danger">Cancelar compra<i class='bx bxs-trash-alt'></i></a>
+                    <% }) %>
                     <a href="create_cli" class="btn btn-warning">Agregar cliente deudor</a>
-                    <a href="#" class="btn btn-success">Confirmar compra</a>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Confirmar compra
+                    </button>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Detalle de compra</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="col" id="seleccion">
+                                    <div class="border" style="margin-top: 10px; padding-bottom: 10px;">
+                                        <table class="table" id="tabla-clientes">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">ID</th>
+                                                <th scope="col">Producto</th>
+                                                <th scope="col">Tipo</th>
+                                                <th scope="col">Cantidad</th>
+                                                <th scope="col">Valor ($)</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                
+                                                <% results.forEach(function (ventas) { %>
+                                                    <tr>
+                                                      <td><%= ventas.id_ventas %></td>
+                                                      <td><%= ventas.producto_ventas %></td>
+                                                      <td><%= ventas.tipo_ventas %></td>
+                                                      <td><%= ventas.cantidad_ventas %></td>
+                                                      <td><%= ventas.valor_ventas %></td>
+                                                    </tr>
+                                                    <% }) %>
+                                            </tbody>
+                                            <tfoot>
+                                                <% results.forEach(function (ventas) { %>
+                                                <tr>
+                                                    <td colspan="4">Total:</td>
+                                                    <td><%= ventas.valor_ventas * ventas.cantidad_ventas %></td>
+                                                </tr>
+                                                <% }) %>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <a href="javascript:imprSelec('seleccion')" class="btn btn-success">Imprimir Boleta</a>
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Listo</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                 </div>
             </div>
         </div>
